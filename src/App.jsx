@@ -1,10 +1,5 @@
 import { Canvas, useFrame } from "@react-three/fiber";
-import {
-  Gltf,
-  OrbitControls,
-  ScrollControls,
-  useScroll,
-} from "@react-three/drei";
+import { ScrollControls, useScroll } from "@react-three/drei";
 import { getProject, val } from "@theatre/core";
 import theatreState from "./fly.json";
 
@@ -22,19 +17,17 @@ export default function App() {
   );
 
   return (
-    <>
-      <Canvas gl={{ preserveDrawingBuffer: true }}>
-        <ScrollControls pages={5} damping={1}>
-          <SheetProvider sheet={sheet}>
-            <Scene1 />
-          </SheetProvider>
-        </ScrollControls>
-      </Canvas>
-    </>
+    <Canvas gl={{ preserveDrawingBuffer: true }}>
+      <ScrollControls pages={5} damping={1}>
+        <SheetProvider sheet={sheet}>
+          <Scene />
+        </SheetProvider>
+      </ScrollControls>
+    </Canvas>
   );
 }
 
-function Scene1() {
+function Scene() {
   const sheet = useCurrentSheet();
   const scroll = useScroll();
 
@@ -51,9 +44,10 @@ function Scene1() {
   return (
     <>
       <color attach="background" args={[bgColor]} />
-      <ambientLight intensity={7} />
+      <ambientLight intensity={0.5} />
       <directionalLight position={[-5, 5, -5]} intensity={1.5} />
-
+      <Car position={[0, 0, 0]} />
+      <Carrera position={[5, 0.6, -7]} />
       <PerspectiveCamera
         theatreKey="Camera"
         makeDefault
@@ -62,8 +56,6 @@ function Scene1() {
         near={0.1}
         far={70}
       />
-      <Car position={[0, 0, 0]} />
-      <Carrera position={[5, 0.6, -7]} />
     </>
   );
 }
