@@ -46,10 +46,8 @@ function Scene() {
       <color attach="background" args={[bgColor]} />
       <ambientLight intensity={0.5} />
       <directionalLight position={[-5, 5, -5]} intensity={1.5} />
-      {/* <Car position={[0, 0, 0]} />
-      <Carrera position={[5, 0.6, -7]} /> */}
-      <Gltf src="/crock/source/Sarcosuchus.glb" castShadow receiveShadow />
-      <Gltf src="/dino/source/Ankylosaurus.glb" castShadow receiveShadow />
+      <Car position={[0, 0, 0]} />
+      <Carrera position={[5, 0.6, -7]} />
       <PerspectiveCamera
         theatreKey="Camera"
         makeDefault
