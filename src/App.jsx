@@ -8,8 +8,6 @@ import {
   PerspectiveCamera,
   useCurrentSheet,
 } from "@theatre/r3f";
-import { Car } from "./Car";
-import { Carrera } from "./Carrera";
 
 export default function App() {
   const sheet = getProject("Fly Through", { state: theatreState }).sheet(
@@ -46,8 +44,10 @@ function Scene() {
       <color attach="background" args={[bgColor]} />
       <ambientLight intensity={0.5} />
       <directionalLight position={[-5, 5, -5]} intensity={1.5} />
-      <Car position={[0, 0, 0]} />
-      <Carrera position={[5, 0.6, -7]} />
+      {/* <Car position={[0, 0, 0]} />
+      <Carrera position={[5, 0.6, -7]} /> */}
+      <Gltf src="/AM.glb" position={[5, 0, -5]} castShadow receiveShadow />
+      <Gltf src="/porsche.glb" castShadow receiveShadow />
       <PerspectiveCamera
         theatreKey="Camera"
         makeDefault
