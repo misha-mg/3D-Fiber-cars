@@ -1,5 +1,5 @@
 import { Canvas, useFrame } from "@react-three/fiber";
-import { ScrollControls, useScroll } from "@react-three/drei";
+import { Gltf, ScrollControls, useScroll } from "@react-three/drei";
 import { getProject, val } from "@theatre/core";
 import theatreState from "./fly.json";
 
@@ -46,8 +46,10 @@ function Scene() {
       <color attach="background" args={[bgColor]} />
       <ambientLight intensity={0.5} />
       <directionalLight position={[-5, 5, -5]} intensity={1.5} />
-      <Car position={[0, 0, 0]} />
-      <Carrera position={[5, 0.6, -7]} />
+      {/* <Car position={[0, 0, 0]} />
+      <Carrera position={[5, 0.6, -7]} /> */}
+      <Gltf src="/crock/source/Sarcosuchus.glb" castShadow receiveShadow />
+      <Gltf src="/dino/source/Ankylosaurus.glb" castShadow receiveShadow />
       <PerspectiveCamera
         theatreKey="Camera"
         makeDefault
