@@ -51,9 +51,9 @@ function Scene1() {
   return (
     <>
       <color attach="background" args={[bgColor]} />
-      <ambientLight intensity={0.5} />
+      <ambientLight intensity={7} />
       <directionalLight position={[-5, 5, -5]} intensity={1.5} />
-      {/* <OrbitControls /> */}
+
       <PerspectiveCamera
         theatreKey="Camera"
         makeDefault
