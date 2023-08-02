@@ -5,3 +5,26 @@
   height: 100vh;
   overflow: hidden;
 }
+/* body{
+  height: 3000px;
+} */
+.model-focus {
+  z-index: 200;
+  position: absolute;
+  top: 450px;
+  left: 350px;
+  height: 500px;
+  width: 900px;
+  border: solid 5px red;
+  pointer-events: none;
+}
+.model-focus1 {
+  z-index: 200;
+  position: absolute;
+  top: 550px;
+  left: 200px;
+  height: 500px;
+  width: 1200px;
+  border: solid 5px red;
+  pointer-events: none;
+}

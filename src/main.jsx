@@ -7,7 +7,8 @@ import "./index.css";
 import Loader from "./Loader/Loader";
 
 // studio.extend(extension);
-// studio.initialize();
+studio.initialize();
+studio.ui.hide();
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

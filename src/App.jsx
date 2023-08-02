@@ -1,7 +1,8 @@
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Gltf, ScrollControls, useScroll } from "@react-three/drei";
+import { Gltf, Scroll, ScrollControls, useScroll } from "@react-three/drei";
 import { getProject, val } from "@theatre/core";
 import theatreState from "./fly.json";
+import "./index.css";
 
 import {
   SheetProvider,
@@ -14,14 +15,21 @@ export default function App() {
     "Scene"
   );
 
+  console.log(useScroll());
+
   return (
-    <Canvas gl={{ preserveDrawingBuffer: true }}>
-      <ScrollControls pages={5} damping={1}>
-        <SheetProvider sheet={sheet}>
-          <Scene />
-        </SheetProvider>
-      </ScrollControls>
-    </Canvas>
+    <>
+      <div id="model-focus"></div>
+      <Canvas gl={{ preserveDrawingBuffer: true }}>
+        <ScrollControls pages={5} damping={1}>
+          <SheetProvider sheet={sheet}>
+            <Scroll>
+              <Scene />
+            </Scroll>
+          </SheetProvider>
+        </ScrollControls>
+      </Canvas>
+    </>
   );
 }
 
@@ -31,12 +39,33 @@ function Scene() {
 
   // our callback will run on every animation frame
   useFrame(() => {
+    const focus = document.getElementById("model-focus");
+
+    if (
+      scroll.offset <= 0.6569948086671727 &&
+      scroll.offset >= 0.5869948086671727
+    ) {
+      focus.classList.add("model-focus");
+    } else {
+      focus.classList.remove("model-focus");
+    }
+
+    if (
+      scroll.offset <= 0.2309551679529786 &&
+      scroll.offset >= 0.1709551679529786
+    ) {
+      focus.classList.add("model-focus1");
+    } else {
+      focus.classList.remove("model-focus1");
+    }
+
+    // console.log(scroll.offset);
+
     // the length of our sequence
     const sequenceLength = val(sheet.sequence.pointer.length);
     // update the "position" of the playhead in the sequence, as a fraction of its whole length
     sheet.sequence.position = scroll.offset * sequenceLength;
   });
-
   const bgColor = "silver";
 
   return (
